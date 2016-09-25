@@ -3,20 +3,29 @@ VoiceChat is a set of APIs to create ad-hoc conferences to be used in the browse
 
 # Looking to self-host?
 
-## Clone this repo
+## Automatically Deploy to Heroku
 
-    $ git clone git@github.com:plivo/voicechat.git
+- Create a [Plivo account](https://manage.plivo.com)
+- Create and **verify** a Heroku account if you don't have one then click the button below.
 
-## Configure
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+## Manual Installation
+
+### Clone this repo
+
+    $ git clone https://github.com/plivo/voicechat.git
+
+### Configure
 Create a Plivo account if you haven't already
 
-## Deploying to Heroku
-Create a Heroku account if you haven't.
+### Deploying to Heroku
+Create and **verify** a Heroku account if you haven't.
 
     $ cd voicechat
     $ heroku create {app_name} -s cedar
     $ git push heroku master
-    $ heroku addons:add redistogo:nano --app {app_name}
+    $ heroku addons:create redistogo:nano --app {app_name}
     $ heroku ps:scale web=1
 
 Add Plivo Auth ID and Auth Token to env from the [dashboard](https://plivo.com/dashboard/).
@@ -24,7 +33,7 @@ Add Plivo Auth ID and Auth Token to env from the [dashboard](https://plivo.com/d
     $ heroku config:set PLIVO_AUTH_ID={PLIVO_AUTH_ID}
     $ heroku config:set PLIVO_AUTH_TOKEN={PLIVO_AUTH_TOKEN}
 
-## Test your application
+### Test your application
 Go to {app_name}.herokuapp.com
 
 
@@ -38,7 +47,7 @@ Go to {app_name}.herokuapp.com
 
     $ curl -XPOST http://voicechatapi.com/api/v1/conference/
     {
-        "conference_name": "p12ygdwt1", 
+        "conference_name": "p12ygdwt1",
         "conference_url": "http://voicechatapi.com/p12ygdwt1/"
     }
 
@@ -60,4 +69,3 @@ Go to {app_name}.herokuapp.com
         "message": "Call has been queued"
     }
 
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/plivo/voicechat/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
